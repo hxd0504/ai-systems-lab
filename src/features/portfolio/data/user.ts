@@ -1,64 +1,54 @@
 import type { User } from "@/features/portfolio/types/user"
 
 export const USER: User = {
-  firstName: "Chánh Đại",
-  lastName: "Nguyễn",
-  displayName: "Chánh Đại",
-  username: "ncdai",
+  firstName: "晓东",
+  lastName: "黄",
+  displayName: "黄晓东",
+  username: "huangxd",
   gender: "male",
   pronouns: "he/him",
-  bio: "Creating with code. Small details matter.",
+  bio: "我关注大模型应用、RAG 系统、知识图谱工程与数据智能应用，擅长把非结构化数据、图谱关系和模型能力整合为可运行、可验证的 AI 应用系统。",
   flipSentences: [
-    "Creating with code. Small details matter.",
-    "Design Engineer",
-    "Open Source Contributor",
+    "AI Application Engineer · RAG · Knowledge Graph Systems",
+    "端到端 RAG 系统 · 知识图谱风控 · 数据智能应用",
   ],
-  address: "Ho Chi Minh City, Viet Nam",
-  phoneNumber: "Kzg0Nzc3ODg4MTQ4", // E.164 format, base64 encoded (https://t.io.vn/base64-string-converter)
-  email: "ZGFpQGNoYW5oZGFpLmNvbQ==", // base64 encoded
-  website: "https://chanhdai.com",
-  jobTitle: "Design Engineer",
+  address: "China",
+  phoneNumber: "",
+  email: "",
+  website: "",
+  jobTitle: "AI Application Engineer",
   jobs: [
     {
-      title: "Design Engineer",
-      company: "shadcncraft",
-      website: "https://shadcncraft.com?atp=ncdai",
-      experienceId: "shadcncraft",
-    },
-    {
-      title: "Founder",
-      company: "Quaric",
-      website: "https://quaric.com",
-      experienceId: "quaric",
+      title: "AI Application Engineer",
+      company: "Knowledge Graph & GraphRAG",
+      website: "",
+      experienceId: "ai-engineer",
     },
   ],
   about: `
-- Design Engineer with 5+ years of experience, known for pixel-perfect execution and strong attention to small details.
-- Passionate about exploring new technologies and turning ideas into reality through polished, thoughtfully crafted personal projects.
-- Creator of [chanhdai.com](https://github.com/ncdai/chanhdai.com) (1.8k stars), [React Wheel Picker](https://react-wheel-picker.chanhdai.com) (24k+ weekly downloads, ▲Vercel OSS Program), and [ZaDark](https://zadark.com) (80k+ downloads, 30k+ users) — peak metrics.
+- AI Application Engineer focused on Knowledge Graph, GraphRAG, Remote Sensing AI, and Reliable AI Systems.
+- Passionate about transforming complex scientific research problems into verifiable, deployable, and interpretable intelligent systems.
+- Key projects include KG defense systems (reducing wrong knowledge admission from 40% to 8%), multi-source graph fusion for biomass prediction (R² improvement from ~0.25 to ~0.72), and GraphRAG quality evaluation frameworks.
 `,
-  avatar: "https://assets.chanhdai.com/images/chanhdai-avatar-ghibli.webp",
+  avatar: "",
   avatarVariants: {
-    lightOff: "https://assets.chanhdai.com/images/avatar-light-off.webp",
-    lightOn: "https://assets.chanhdai.com/images/avatar-light-on.webp",
-    darkOff: "https://assets.chanhdai.com/images/avatar-dark-off.webp",
-    darkOn: "https://assets.chanhdai.com/images/avatar-dark-on.webp",
+    lightOff: "",
+    lightOn: "",
+    darkOff: "",
+    darkOn: "",
   },
-  ogImage:
-    "https://assets.chanhdai.com/images/screenshot-og-image-dark.png?t=1778602757",
-  namePronunciationUrl: "https://assets.chanhdai.com/audio/chanhdai.mp3",
-  timeZone: "Asia/Ho_Chi_Minh",
+  ogImage: "",
+  namePronunciationUrl: "",
+  timeZone: "Asia/Shanghai",
   keywords: [
-    "ncdai",
-    "nguyenchanhdai",
-    "nguyen chanh dai",
-    "chanhdai",
-    "chanh dai",
-    "iamncdai",
-    "quaric",
-    "zadark",
-    "nguyễn chánh đại",
-    "chánh đại",
+    "黄晓东",
+    "AI Application Engineer",
+    "Knowledge Graph",
+    "GraphRAG",
+    "Remote Sensing AI",
+    "KG Defense",
+    "Graph Fusion",
+    "Reliable AI",
   ],
-  dateCreated: "2023-10-20", // YYYY-MM-DD
+  dateCreated: "2024-01-01",
 }

@@ -2,34 +2,31 @@ import { USER } from "@/features/portfolio/data/user"
 import type { NavItem } from "@/types/nav"
 
 export const SITE_INFO = {
-  name: USER.displayName,
-  url: process.env.APP_URL || "https://chanhdai.com",
+  name: "Night Lab",
+  url: process.env.APP_URL || "https://nightlab.dev",
   ogImage: USER.ogImage,
-  description: USER.bio,
+  description:
+    "AI Systems Portfolio — Knowledge Graph, GraphRAG, Remote Sensing AI, Reliable AI Systems",
   keywords: USER.keywords,
 }
 
 export const META_THEME_COLORS = {
-  light: "#ffffff",
-  dark: "#09090b",
+  light: "#0a0e1a",
+  dark: "#0a0e1a",
 }
 
 export const MAIN_NAV: NavItem[] = [
   {
-    title: "Components",
-    href: "/components",
+    title: "Projects",
+    href: "/projects",
   },
   {
-    title: "Blocks",
-    href: "/blocks",
+    title: "About",
+    href: "/about",
   },
   {
-    title: "Blog",
-    href: "/blog",
-  },
-  {
-    title: "Sponsors",
-    href: "/sponsors",
+    title: "Contact",
+    href: "/contact",
   },
 ]
 
@@ -41,13 +38,9 @@ export const MOBILE_NAV: NavItem[] = [
   ...MAIN_NAV,
 ]
 
-export const X_HANDLE = "@iamncdai"
-export const GITHUB_USERNAME = "ncdai"
-export const SOURCE_CODE_GITHUB_REPO = "ncdai/chanhdai.com"
-export const SOURCE_CODE_GITHUB_URL = "https://github.com/ncdai/chanhdai.com"
-
-export const SPONSORSHIP_URL = "https://github.com/sponsors/ncdai"
-
-export const UTM_PARAMS = {
-  utm_source: "chanhdai.com",
-}
+export const X_HANDLE = ""
+export const GITHUB_USERNAME = ""
+export const SOURCE_CODE_GITHUB_REPO = ""
+export const SOURCE_CODE_GITHUB_URL = ""
+export const SPONSORSHIP_URL = ""
+export const UTM_PARAMS: Record<string, string> = {}

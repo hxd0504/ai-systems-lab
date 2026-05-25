@@ -1,3 +1,40 @@
+# Night Lab: AI Systems Portfolio
+
+基于 chanhdai.com 模板改造的 AI 作品集网站。
+
+## 快速开始
+
+```bash
+# 安装依赖
+npm install --legacy-peer-deps
+
+# 开发服务器
+npm run dev
+
+# 构建
+npm run build
+
+# 启动
+npm start
+```
+
+## 技术栈
+
+- Next.js 16 + React 19
+- Tailwind CSS v4
+- Framer Motion
+- Canvas API (粒子动画)
+
+## 页面结构
+
+- `/` - 首页 Hero + 项目展示
+- `/projects` - 项目列表
+- `/projects/[slug]` - 项目详情 (kg-defense, graph-fusion, graphrag-quality, legal-rag)
+- `/about` - 关于页面
+- `/contact` - 联系方式
+
+---
+
 # [chanhdai.com](https://chanhdai.com) &middot; [![GitHub License](https://img.shields.io/github/license/ncdai/chanhdai.com?label=License)](https://github.com/ncdai/chanhdai.com/blob/main/LICENSE) ![GitHub Repo Views](https://gitviews.com/repo/ncdai/chanhdai.com.svg?style=flat&label-color=%23555&color=%23f59e0b)
 
 A pixel-perfect dev portfolio and shadcn registry showcasing my work as a Design Engineer.

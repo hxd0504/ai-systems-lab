@@ -1,25 +1,89 @@
+export type VisualType =
+  | "kg-rag-pipeline"
+  | "kg-defense-flow"
+  | "graph-fusion"
+  | "graphrag-eval"
+
+export type RepoStatus = "public" | "private" | "pending"
+
+export interface ArchitectureStep {
+  label: string
+  icon?: string
+}
+
+export interface EvidenceItem {
+  type:
+    | "github"
+    | "demo"
+    | "readme"
+    | "api-docs"
+    | "paper"
+    | "patent"
+    | "architecture"
+    | "evaluation"
+  label: string
+  url?: string
+}
+
+export interface ScreenshotItem {
+  title: string
+  description: string
+  type:
+    | "api-docs"
+    | "graph"
+    | "demo"
+    | "terminal"
+    | "flow"
+    | "result"
+    | "architecture"
+}
+
+export interface HighlightMetric {
+  label: string
+  value: string
+  suffix?: string
+}
+
 export type Project = {
-  /** Stable unique identifier (used as list key/anchor). */
   id: string
   title: string
-  /**
-   * Project period for display and sorting.
-   * Use "MM.YYYY" format. Omit `end` for ongoing projects.
-   */
+  subtitle: string
   period: {
-    /** Start date (e.g., "05.2025"). */
     start: string
-    /** End date; leave undefined for "Present". */
     end?: string
   }
-  /** Public URL (site, repository, demo, or video). */
   link: string
-  /** Tags/technologies for chips or filtering. */
   skills: string[]
-  /** Optional rich description; Markdown and line breaks supported. */
   description?: string
-  /** Logo image URL (absolute or path under /public). */
   logo?: string
-  /** Whether the project card is expanded by default in the UI. */
   isExpanded?: boolean
+  systemFlow?: string
+  sections?: ProjectSection[]
+  relatedOutputs?: RelatedOutput[]
+  // New fields
+  githubUrl?: string
+  demoUrl?: string
+  readmeUrl?: string
+  paperUrl?: string
+  patentUrl?: string
+  repoStatus?: RepoStatus
+  visualType?: VisualType
+  architectureSteps?: ArchitectureStep[]
+  evidenceItems?: EvidenceItem[]
+  screenshots?: ScreenshotItem[]
+  apiExamples?: string[]
+  highlightMetrics?: HighlightMetric[]
+}
+
+export type ProjectSection = {
+  title: string
+  titleEn: string
+  content: string
+}
+
+export type RelatedOutput = {
+  type: "paper" | "patent" | "conference"
+  title: string
+  venue?: string
+  status?: string
 }
