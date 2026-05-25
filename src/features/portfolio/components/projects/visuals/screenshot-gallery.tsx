@@ -128,13 +128,23 @@ export function ScreenshotGallery({ screenshots }: Props) {
           transition={{ delay: i * 0.1 }}
           className="group relative overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.03] transition-all hover:border-cyan-glow/20"
         >
-          {/* Placeholder visual */}
-          <div className="flex aspect-video items-center justify-center bg-gradient-to-br from-white/[0.02] to-white/[0.05]">
-            <div className="flex flex-col items-center gap-2 text-muted-foreground/30">
-              {typeIcons[shot.type] || typeIcons.result}
-              <span className="text-xs">Screenshot Placeholder</span>
+          {/* Image or placeholder */}
+          {shot.image ? (
+            <div className="aspect-video overflow-hidden">
+              <img
+                src={shot.image}
+                alt={shot.title}
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
             </div>
-          </div>
+          ) : (
+            <div className="flex aspect-video items-center justify-center bg-gradient-to-br from-white/[0.02] to-white/[0.05]">
+              <div className="flex flex-col items-center gap-2 text-muted-foreground/30">
+                {typeIcons[shot.type] || typeIcons.result}
+                <span className="text-xs">Screenshot Placeholder</span>
+              </div>
+            </div>
+          )}
 
           {/* Info overlay */}
           <div className="p-3">

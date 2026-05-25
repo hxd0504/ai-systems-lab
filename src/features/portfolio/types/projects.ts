@@ -28,6 +28,7 @@ export interface EvidenceItem {
 export interface ScreenshotItem {
   title: string
   description: string
+  image?: string
   type:
     | "api-docs"
     | "graph"

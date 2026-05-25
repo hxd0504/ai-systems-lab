@@ -36,7 +36,11 @@ export const PROJECTS: Project[] = [
       { label: "接口类型", value: "REST", suffix: "FastAPI" },
     ],
     evidenceItems: [
-      { type: "github", label: "GitHub 仓库" },
+      {
+        type: "github",
+        label: "GitHub 仓库",
+        url: "https://github.com/hxd0504/-graph-cdjcxy",
+      },
       { type: "demo", label: "问答 Demo" },
       { type: "readme", label: "README 文档" },
       { type: "api-docs", label: "API 接口文档" },
@@ -51,17 +55,20 @@ export const PROJECTS: Project[] = [
       {
         title: "Neo4j 图谱可视化",
         description: "知识图谱节点与关系在 Neo4j Browser 中的展示",
+        image: "/evidence/kg-rag-neo4j-nodes.png",
         type: "graph",
       },
       {
-        title: "问答 Demo 运行",
-        description: "基于图谱检索的多跳问答交互截图",
-        type: "demo",
+        title: "节点关系演示",
+        description: "知识图谱中实体关系的结构化展示",
+        image: "/evidence/kg-rag-neo4j-relations.png",
+        type: "graph",
       },
       {
-        title: "系统运行日志",
-        description: "终端中 FastAPI 服务启动与请求处理日志",
-        type: "terminal",
+        title: "西藏旅游知识图谱",
+        description: "动态知识图谱自适应演化结果",
+        image: "/evidence/kg-rag-tibet-kg.jpg",
+        type: "result",
       },
     ],
     sections: [
@@ -130,31 +137,39 @@ export const PROJECTS: Project[] = [
       { label: "审查队列覆盖率", value: "34.5%", suffix: "" },
     ],
     evidenceItems: [
-      { type: "github", label: "GitHub 仓库" },
+      {
+        type: "github",
+        label: "GitHub 仓库",
+        url: "https://github.com/hxd0504/DISC-LawLLM-RAG",
+      },
       { type: "readme", label: "README 文档" },
       { type: "patent", label: "专利文档" },
       { type: "evaluation", label: "消融实验数据" },
     ],
     screenshots: [
       {
-        title: "风险决策流程",
-        description: "PASS / FLAG / REJECT 三路分流的决策界面",
-        type: "flow",
-      },
-      {
-        title: "局部子图一致性检查",
-        description: "候选知识与现有图谱的局部子图对比分析",
-        type: "graph",
-      },
-      {
         title: "消融实验结果",
         description: "规则过滤器与一致性检查各自的贡献量化",
+        image: "/evidence/kg-immune-ablation.png",
         type: "result",
       },
       {
-        title: "审查队列面板",
-        description: "FLAG 状态的人工复核队列与审核界面",
-        type: "terminal",
+        title: "框架防御节点关系",
+        description: "风控框架中防御节点的 Neo4j 关系展示",
+        image: "/evidence/kg-immune-neo4j-defense.png",
+        type: "graph",
+      },
+      {
+        title: "三机制对比分析",
+        description: "三种风控机制的综合效果对比",
+        image: "/evidence/kg-immune-three-mechanisms.png",
+        type: "result",
+      },
+      {
+        title: "机制雷达对比",
+        description: "多维度机制效果的雷达图对比",
+        image: "/evidence/kg-immune-mechanism-radar.png",
+        type: "result",
       },
     ],
     sections: [
@@ -237,12 +252,22 @@ export const PROJECTS: Project[] = [
       { label: "特征维度", value: "12", suffix: "维" },
     ],
     evidenceItems: [
-      { type: "github", label: "GitHub 仓库" },
+      {
+        type: "github",
+        label: "GitHub 仓库",
+        url: "https://github.com/hxd0504/multi-source-graph-fusion",
+      },
       { type: "readme", label: "README 文档" },
       { type: "paper", label: "EAAI 论文" },
       { type: "evaluation", label: "OOD 评估实验" },
     ],
     screenshots: [
+      {
+        title: "特征与模型复杂度优先级",
+        description: "特征重要性分析与模型复杂度的优先级排序",
+        image: "/evidence/ecological-feature-importance.png",
+        type: "result",
+      },
       {
         title: "双图融合架构",
         description: "TKG 拓扑图 + EKG 生态图的融合架构示意",
@@ -252,11 +277,6 @@ export const PROJECTS: Project[] = [
         title: "AGB 预测结果",
         description: "预测值与实测值的散点对比图",
         type: "result",
-      },
-      {
-        title: "遥感数据处理",
-        description: "多源遥感数据的特征提取与预处理流水线",
-        type: "flow",
       },
       {
         title: "图结构可视化",
@@ -338,15 +358,26 @@ export const PROJECTS: Project[] = [
       { label: "诊断粒度", value: "过程级", suffix: "" },
     ],
     evidenceItems: [
-      { type: "github", label: "GitHub 仓库" },
+      {
+        type: "github",
+        label: "GitHub 仓库",
+        url: "https://github.com/hxd0504/KG-quality-study",
+      },
       { type: "readme", label: "README 文档" },
       { type: "paper", label: "EI 会议论文" },
       { type: "evaluation", label: "评测报告" },
     ],
     screenshots: [
       {
-        title: "退化等级注入",
+        title: "知识质量对 RAG 的影响",
+        description: "知识图谱质量退化对 RAG 问答准确率的影响曲线",
+        image: "/evidence/graphrag-quality-impact.png",
+        type: "result",
+      },
+      {
+        title: "退化注入实验",
         description: "三类退化在不同等级下的注入效果对比",
+        image: "/evidence/graphrag-quality-injection.png",
         type: "flow",
       },
       {
@@ -358,11 +389,6 @@ export const PROJECTS: Project[] = [
         title: "过程级诊断",
         description: "Evidence Usage 证据使用的分布统计",
         type: "result",
-      },
-      {
-        title: "质量退化报告",
-        description: "自动生成的质量退化分析报告截图",
-        type: "architecture",
       },
     ],
     sections: [
