@@ -16,7 +16,7 @@ export const PROJECTS: Project[] = [
       "OpenAI 兼容接口",
     ],
     description:
-      "支持从长文本到图谱问答的完整应用链路，包含双模式知识抽取（规则 / LLM）、图谱存储、向量检索与问答生成。",
+      "从长文本到图谱问答的完整可运行系统，包含双模式知识抽取、图谱存储、混合检索与 FastAPI 问答接口。",
     systemFlow:
       "Text → Chunk → KG Extraction → Neo4j → Retrieval → LLM Answer → FastAPI",
     repoStatus: "public",
@@ -37,6 +37,7 @@ export const PROJECTS: Project[] = [
     ],
     evidenceItems: [
       { type: "github", label: "GitHub 仓库" },
+      { type: "demo", label: "问答 Demo" },
       { type: "readme", label: "README 文档" },
       { type: "api-docs", label: "API 接口文档" },
       { type: "architecture", label: "架构设计文档" },
@@ -44,22 +45,22 @@ export const PROJECTS: Project[] = [
     screenshots: [
       {
         title: "FastAPI 接口文档",
-        description: "自动生成的 REST API 文档界面",
+        description: "自动生成的 Swagger UI 问答接口文档",
         type: "api-docs",
       },
       {
         title: "Neo4j 图谱可视化",
-        description: "知识图谱在 Neo4j 中的节点与关系展示",
+        description: "知识图谱节点与关系在 Neo4j Browser 中的展示",
         type: "graph",
       },
       {
-        title: "问答 Demo",
-        description: "基于图谱的问答交互界面",
+        title: "问答 Demo 运行",
+        description: "基于图谱检索的多跳问答交互截图",
         type: "demo",
       },
       {
-        title: "系统运行截图",
-        description: "终端中的系统运行状态",
+        title: "系统运行日志",
+        description: "终端中 FastAPI 服务启动与请求处理日志",
         type: "terminal",
       },
     ],
@@ -68,19 +69,19 @@ export const PROJECTS: Project[] = [
         title: "应用场景",
         titleEn: "Scenario",
         content:
-          "面向需要从大量非结构化文本中构建知识图谱并进行智能问答的场景，如企业知识库、领域专家系统、技术文档问答等。",
+          "面向需要从大量非结构化文本中构建知识图谱并进行智能问答的场景：企业知识库问答、领域专家系统、技术文档检索等。系统可直接部署为 FastAPI 服务，接收自然语言问题，返回基于图谱推理的答案。",
       },
       {
         title: "解决的问题",
         titleEn: "Problem",
         content:
-          "传统 RAG 系统仅依赖向量检索，无法利用实体间关系进行多跳推理。本系统将知识图谱构建与 RAG 问答整合为端到端链路，支持基于图谱关系的深度问答。",
+          "传统 RAG 仅依赖向量相似度检索，无法利用实体间关系进行多跳推理。本系统将知识图谱构建与 RAG 问答整合为一条端到端链路，支持从原始文本到可部署问答服务的完整交付。",
       },
       {
         title: "核心模块",
         titleEn: "Modules",
         content:
-          "- 双模式知识抽取器（规则引擎 + LLM 抽取）\n- Neo4j 图谱存储与查询\n- 向量检索 + 图谱遍历的混合检索\n- FastAPI 问答接口\n- LangChain 编排",
+          "- 双模式知识抽取器：规则引擎（高精度）+ LLM 抽取（高召回）\n- Neo4j 图谱存储与 Cypher 查询\n- 混合检索：向量召回 + 图谱遍历\n- FastAPI 问答接口（REST，可直接调用）\n- LangChain 编排与链路管理",
       },
       {
         title: "技术栈",
@@ -92,13 +93,13 @@ export const PROJECTS: Project[] = [
         title: "关键结果",
         titleEn: "Results",
         content:
-          "- 支持从长文本自动构建知识图谱\n- 提供 FastAPI 问答接口，可直接调用\n- 双模式抽取适应不同精度需求\n- 完整交付文档与运行指南",
+          "- 可运行系统：从文本输入到问答输出的完整链路已跑通\n- 双模式抽取：规则模式精确、LLM 模式灵活，可按场景切换\n- 混合检索：向量 + 图谱遍历，支持多跳关系问答\n- 已封装为 FastAPI 服务，提供 Swagger 文档",
       },
       {
         title: "我的职责",
         titleEn: "My Role",
         content:
-          "独立完成系统设计、知识抽取模块开发、图谱存储方案、检索策略与 FastAPI 接口封装。",
+          "独立完成系统架构设计、知识抽取模块开发、Neo4j 图谱存储方案、混合检索策略实现与 FastAPI 接口封装。",
       },
     ],
     relatedOutputs: [],
@@ -111,7 +112,7 @@ export const PROJECTS: Project[] = [
     link: "/projects/kg-immune-system",
     skills: ["Neo4j", "规则引擎", "统计检验", "Python", "mem0 记忆集成"],
     description:
-      "提供候选知识写入前的风险分流机制，结合规则过滤与局部子图一致性检查，实现知识图谱更新的安全控制。",
+      "知识图谱写入前的风险分流机制，结合规则过滤与局部子图一致性检查，实现数据准入控制与错误拦截。",
     systemFlow:
       "Candidate Data → Rule Check → Local Consistency Check → PASS / FLAG / REJECT → Main KG / Review Queue",
     repoStatus: "public",
@@ -132,23 +133,28 @@ export const PROJECTS: Project[] = [
       { type: "github", label: "GitHub 仓库" },
       { type: "readme", label: "README 文档" },
       { type: "patent", label: "专利文档" },
-      { type: "evaluation", label: "消融实验" },
+      { type: "evaluation", label: "消融实验数据" },
     ],
     screenshots: [
       {
         title: "风险决策流程",
-        description: "PASS / FLAG / REJECT 三路分流可视化",
+        description: "PASS / FLAG / REJECT 三路分流的决策界面",
         type: "flow",
       },
       {
-        title: "局部子图检查",
-        description: "一致性检查的局部子图分析界面",
+        title: "局部子图一致性检查",
+        description: "候选知识与现有图谱的局部子图对比分析",
         type: "graph",
       },
       {
-        title: "指标对比",
-        description: "规则过滤器与一致性检查的消融实验结果",
+        title: "消融实验结果",
+        description: "规则过滤器与一致性检查各自的贡献量化",
         type: "result",
+      },
+      {
+        title: "审查队列面板",
+        description: "FLAG 状态的人工复核队列与审核界面",
+        type: "terminal",
       },
     ],
     sections: [
@@ -156,19 +162,19 @@ export const PROJECTS: Project[] = [
         title: "应用场景",
         titleEn: "Scenario",
         content:
-          "面向持续更新的知识图谱系统，需要在数据写入前进行质量把关和风险控制，防止错误知识污染图谱。",
+          "面向持续更新的知识图谱系统。在生产环境中，新知识不断涌入，需要在写入前进行质量把关，防止错误数据污染图谱，影响下游问答和推理系统。",
       },
       {
         title: "解决的问题",
         titleEn: "Problem",
         content:
-          "知识图谱在持续更新过程中，错误知识一旦写入会导致下游推理和问答系统产生错误结果。传统方法缺乏写入前的风险分流机制。",
+          "知识图谱一旦写入错误知识，会导致下游 RAG 问答产生错误答案且难以追溯。传统方法缺乏写入前的风险分流机制，只能事后排查，成本高、响应慢。",
       },
       {
         title: "核心模块",
         titleEn: "Modules",
         content:
-          "- 显式规则过滤器\n- 局部子图一致性检查器\n- 风险分流决策器（PASS / FLAG / REJECT）\n- 隔离审查队列\n- mem0 记忆集成",
+          "- 显式规则过滤器：拦截明显不合法的候选知识\n- 局部子图一致性检查器：基于统计检验判断新知识是否与现有图谱矛盾\n- 风险分流决策器：PASS（写入主图谱）/ FLAG（人工复核）/ REJECT（直接拦截）\n- 隔离审查队列：FLAG 条目进入人工复核流程\n- mem0 记忆集成：记录历史决策，辅助后续判断",
       },
       {
         title: "技术栈",
@@ -179,13 +185,13 @@ export const PROJECTS: Project[] = [
         title: "关键结果",
         titleEn: "Results",
         content:
-          "- 错误知识准入率：40% → 8%\n- 异常拦截率：80%\n- 审查队列覆盖率：34.5%\n- 消融实验证明各模块贡献",
+          "- 错误知识准入率：40% → 8%（降低 80%）\n- 异常拦截率：80%（高召回）\n- 审查队列覆盖率：34.5%（需人工复核的比例）\n- 消融实验证明规则过滤器和一致性检查各自独立贡献",
       },
       {
         title: "我的职责",
         titleEn: "My Role",
         content:
-          "独立完成风控框架设计、规则引擎开发、一致性检查算法、决策分流逻辑与实验验证。",
+          "独立完成风控框架设计、规则引擎开发、局部子图一致性检查算法、三路分流决策逻辑与消融实验验证。",
       },
     ],
     relatedOutputs: [
@@ -206,12 +212,12 @@ export const PROJECTS: Project[] = [
       "PyTorch Geometric",
       "GAT",
       "GCN",
-      "遥感数据",
+      "遥感数据处理",
       "scikit-learn",
       "rasterio",
     ],
     description:
-      "将多源生态数据组织为图结构并完成预测，融合拓扑知识图谱与生态知识图谱进行遥感生物量预测。",
+      "将多源遥感数据组织为图结构，通过双图融合 GNN 实现森林地上生物量预测，核心是数据工程 + 图建模 + 模型部署。",
     systemFlow:
       "Remote Sensing Data → Feature Extraction → TKG + EKG → Dual-Graph Fusion → GNN Prediction → AGB Output",
     repoStatus: "public",
@@ -238,19 +244,24 @@ export const PROJECTS: Project[] = [
     ],
     screenshots: [
       {
-        title: "双图架构",
+        title: "双图融合架构",
         description: "TKG 拓扑图 + EKG 生态图的融合架构示意",
         type: "architecture",
       },
       {
-        title: "预测结果",
-        description: "AGB 预测值与实测值对比",
+        title: "AGB 预测结果",
+        description: "预测值与实测值的散点对比图",
         type: "result",
       },
       {
-        title: "Strict OOD 分割",
-        description: "空间 OOD 数据分割策略可视化",
+        title: "遥感数据处理",
+        description: "多源遥感数据的特征提取与预处理流水线",
         type: "flow",
+      },
+      {
+        title: "图结构可视化",
+        description: "4000 节点的拓扑图与生态图结构展示",
+        type: "graph",
       },
     ],
     sections: [
@@ -258,19 +269,19 @@ export const PROJECTS: Project[] = [
         title: "应用场景",
         titleEn: "Scenario",
         content:
-          "面向遥感生态监测场景，利用多源遥感数据和生态知识进行森林地上生物量 (AGB) 预测。",
+          "面向遥感生态监测场景：利用多源遥感影像和生态领域知识，预测森林地上生物量 (AGB)。核心价值在于数据工程能力——将散落的遥感数据、拓扑关系、生态知识整合为可计算的图结构。",
       },
       {
         title: "解决的问题",
         titleEn: "Problem",
         content:
-          "传统遥感反演方法仅利用光谱特征，缺乏生态领域知识的融合。本系统将拓扑关系和生态知识组织为图结构，与遥感特征联合建模。",
+          "传统遥感反演仅利用光谱特征，缺乏生态领域知识的融合。本系统将拓扑关系和生态知识组织为图结构，与遥感特征联合建模，显著提升预测精度。",
       },
       {
         title: "核心模块",
         titleEn: "Modules",
         content:
-          "- 拓扑知识图谱 (TKG) 构建\n- 生态知识图谱 (EKG) 构建\n- 双图融合模块 (GAT + GCN)\n- 分段建模策略\n- Strict OOD 评估",
+          "- 多源遥感数据处理流水线（rasterio + 特征工程）\n- 拓扑知识图谱 (TKG)：空间邻接关系建模\n- 生态知识图谱 (EKG)：领域知识关系建模\n- 双图融合模块：GAT + GCN 联合学习\n- 分段建模策略：按区域特征差异化建模\n- Strict Spatial OOD 评估：验证泛化能力",
       },
       {
         title: "技术栈",
@@ -282,13 +293,13 @@ export const PROJECTS: Project[] = [
         title: "关键结果",
         titleEn: "Results",
         content:
-          "- 融合 R²: ~0.25 → ~0.72\n- 4,000 图节点\n- 12 维特征空间\n- Strict Spatial OOD 验证泛化能力",
+          "- 融合 R²: ~0.25 → ~0.72（提升近 3 倍）\n- 4,000 图节点，12 维特征空间\n- Strict Spatial OOD 验证：模型在未见区域仍保持预测能力\n- 双图融合显著优于单图基线",
       },
       {
         title: "我的职责",
         titleEn: "My Role",
         content:
-          "独立完成双图融合架构设计、TKG/EKG 构建、GNN 模型开发、分段建模策略与 OOD 评估实验。",
+          "独立完成数据处理流水线、双图融合架构设计、TKG/EKG 构建、GNN 模型开发、分段建模策略与 OOD 评估实验。",
       },
     ],
     relatedOutputs: [
@@ -309,7 +320,7 @@ export const PROJECTS: Project[] = [
     link: "/projects/graphrag-evaluation",
     skills: ["GraphRAG", "Neo4j", "QA Benchmark", "Python", "过程级诊断"],
     description:
-      "为 GraphRAG 系统提供质量评测与诊断能力，覆盖事实冲突、结构噪声、时间错位三类退化场景。",
+      "GraphRAG 系统上线前的质量评测工具，覆盖事实冲突、结构噪声、时间错位三类退化场景，提供过程级诊断。",
     systemFlow:
       "KG with Degradation → GraphRAG Pipeline → QA Benchmark → Answer Evaluation → Process Diagnostics → Report",
     repoStatus: "public",
@@ -334,19 +345,24 @@ export const PROJECTS: Project[] = [
     ],
     screenshots: [
       {
-        title: "退化等级",
-        description: "三类退化在不同等级下的注入效果",
+        title: "退化等级注入",
+        description: "三类退化在不同等级下的注入效果对比",
         type: "flow",
       },
       {
-        title: "QA 评测",
-        description: "898 道 QA 题的准确率变化曲线",
+        title: "QA 评测曲线",
+        description: "898 道 QA 题在不同退化等级下的准确率变化",
         type: "result",
       },
       {
-        title: "Evidence Usage",
-        description: "过程级诊断中证据使用的分布统计",
+        title: "过程级诊断",
+        description: "Evidence Usage 证据使用的分布统计",
         type: "result",
+      },
+      {
+        title: "质量退化报告",
+        description: "自动生成的质量退化分析报告截图",
+        type: "architecture",
       },
     ],
     sections: [
@@ -354,19 +370,19 @@ export const PROJECTS: Project[] = [
         title: "应用场景",
         titleEn: "Scenario",
         content:
-          "面向 GraphRAG 系统上线前的质量评测，帮助开发者识别知识图谱中的质量问题对问答准确率的影响。",
+          "面向 GraphRAG 系统上线前的质量评测。在生产部署前，帮助开发者回答：当前图谱质量是否足够支撑问答准确率要求？哪类退化对结果影响最大？需要优先修复什么？",
       },
       {
         title: "解决的问题",
         titleEn: "Problem",
         content:
-          "GraphRAG 系统的问答质量高度依赖底层知识图谱质量，但缺乏系统性的评测工具来量化不同类型退化对最终结果的影响。",
+          "GraphRAG 的问答质量高度依赖底层知识图谱质量，但缺乏系统性评测工具。开发者无法量化回答「图谱质量差了多少 → 问答准确率降了多少」，也无法定位具体是哪类质量问题导致了退化。",
       },
       {
         title: "核心模块",
         titleEn: "Modules",
         content:
-          "- 三类退化注入器（事实冲突 / 结构噪声 / 时间错位）\n- 898 题 QA Benchmark\n- 过程级诊断框架\n- 质量退化可视化",
+          "- 三类退化注入器：事实冲突、结构噪声、时间错位，每类支持多等级注入\n- 898 题 QA Benchmark：覆盖单跳、多跳、聚合三类问法\n- 过程级诊断框架：追踪检索、证据使用、推理各环节的退化传导\n- 质量退化可视化：自动生成评测报告",
       },
       {
         title: "技术栈",
@@ -377,13 +393,13 @@ export const PROJECTS: Project[] = [
         title: "关键结果",
         titleEn: "Results",
         content:
-          "- 898 道 QA 测试题\n- 3 类退化类型系统分析\n- 过程级可解释性诊断\n- 发现质量退化的非线性崩溃规律",
+          "- 898 道 QA 测试题，覆盖 3 类问法\n- 3 类退化类型的系统性影响量化\n- 过程级可解释性诊断：定位退化传导路径\n- 发现质量退化的非线性崩溃规律（轻微退化影响小，临界点后急剧恶化）",
       },
       {
         title: "我的职责",
         titleEn: "My Role",
         content:
-          "独立完成评测框架设计、退化注入器开发、QA Benchmark 构建、过程级诊断算法与实验分析。",
+          "独立完成评测框架设计、三类退化注入器开发、898 题 QA Benchmark 构建、过程级诊断算法实现与实验分析。",
       },
     ],
     relatedOutputs: [
