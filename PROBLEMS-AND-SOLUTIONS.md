@@ -36,3 +36,28 @@
 ## 8. Project 类型扩展
 **问题**: 原 Project 类型不支持 systemFlow 和结构化 sections
 **解法**: 扩展类型定义，新增 ProjectSection 和 RelatedOutput 子类型
+
+## 9. husky pre-commit hook 因 pnpm 安装超时失败
+**问题**: `.husky/pre-commit` 使用 `pnpm lint-staged`，但依赖是用 npm 安装的。pnpm 运行时检测到 node_modules 状态不一致，尝试重新下载全部包，因网络超时失败。
+**解法**: 将 `.husky/pre-commit` 中的 `pnpm lint-staged` 改为 `npx lint-staged`，使用 npm 安装的 lint-staged。
+
+## 10. ESLint 报错：内部路由使用 `<a>` 而非 `<Link />`
+**问题**: `src/features/portfolio/components/hero/index.tsx` 中 `/projects` 链接使用 `<a>` 标签，ESLint 规则 `@next/next/no-html-link-for-pages` 报错。
+**解法**: 导入 `next/link`，将 `<a href="/projects">` 改为 `<Link href="/projects">`。
+
+## Git 备份记录 (2026-05-25)
+- **项目路径**: `C:\Users\admin\portfolio-templates\01-chanhdai`
+- **是否首次初始化 Git**: 否，已有 .git（原模板仓库）
+- **build 命令**: `npm run build` (Next.js Turbopack)
+- **遇到的问题**:
+  1. remote 指向原模板仓库 ncdai/chanhdai.com → 改为用户仓库
+  2. husky pre-commit 用 pnpm 但依赖是 npm 安装的 → 改 hook 为 npx
+  3. ESLint 报错 hero 组件用 `<a>` 而非 `<Link />` → 修复
+- **解决办法**: 见上方第 9、10 条
+- **GitHub 仓库地址**: https://github.com/hxd0504/ai-systems-lab
+- **当前版本 tag**: v0.1-night-lab
+- **commit hash**: f31d5e24
+- **分支**: main
+- **build 是否通过**: 是（13 页全部生成）
+- **是否发现敏感文件**: 否（仅 .env.example，全为占位值）
+- **是否还有未提交文件**: 否（工作区干净）
