@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "motion/react"
+import { useCallback, useState } from "react"
 
 import type { ScreenshotItem } from "@/features/portfolio/types/projects"
 
@@ -117,44 +118,104 @@ const typeIcons: Record<string, React.ReactNode> = {
 }
 
 export function ScreenshotGallery({ screenshots }: Props) {
-  return (
-    <div className="grid gap-4 sm:grid-cols-2">
-      {screenshots.map((shot, i) => (
-        <motion.div
-          key={shot.title}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.1 }}
-          className="group relative overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.03] transition-all hover:border-cyan-glow/20"
-        >
-          {/* Image or placeholder */}
-          {shot.image ? (
-            <div className="aspect-video overflow-hidden">
-              <img
-                src={shot.image}
-                alt={shot.title}
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-            </div>
-          ) : (
-            <div className="flex aspect-video items-center justify-center bg-gradient-to-br from-white/[0.02] to-white/[0.05]">
-              <div className="flex flex-col items-center gap-2 text-muted-foreground/30">
-                {typeIcons[shot.type] || typeIcons.result}
-                <span className="text-xs">Screenshot Placeholder</span>
-              </div>
-            </div>
-          )}
+  const [lightbox, setLightbox] = useState<{
+    src: string
+    title: string
+  } | null>(null)
 
-          {/* Info overlay */}
-          <div className="p-3">
-            <p className="text-sm font-medium text-foreground">{shot.title}</p>
-            <p className="mt-0.5 text-xs text-muted-foreground">
-              {shot.description}
+  const closeLightbox = useCallback(() => setLightbox(null), [])
+
+  return (
+    <>
+      <div className="grid gap-4 sm:grid-cols-2">
+        {screenshots.map((shot, i) => (
+          <motion.div
+            key={shot.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1 }}
+            className={`group relative overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.03] transition-all hover:border-cyan-glow/20 ${shot.image ? "cursor-pointer" : ""}`}
+            onClick={() => {
+              if (shot.image)
+                setLightbox({ src: shot.image, title: shot.title })
+            }}
+          >
+            {/* Image or placeholder */}
+            {shot.image ? (
+              <div className="aspect-video overflow-hidden">
+                <img
+                  src={shot.image}
+                  alt={shot.title}
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+            ) : (
+              <div className="flex aspect-video items-center justify-center bg-gradient-to-br from-white/[0.02] to-white/[0.05]">
+                <div className="flex flex-col items-center gap-2 text-muted-foreground/30">
+                  {typeIcons[shot.type] || typeIcons.result}
+                  <span className="text-xs">Screenshot Placeholder</span>
+                </div>
+              </div>
+            )}
+
+            {/* Info overlay */}
+            <div className="p-3">
+              <p className="text-sm font-medium text-foreground">
+                {shot.title}
+              </p>
+              <p className="mt-0.5 text-xs text-muted-foreground">
+                {shot.description}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Lightbox modal */}
+      {lightbox && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          onClick={closeLightbox}
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="relative max-h-[90vh] max-w-4xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={closeLightbox}
+              className="absolute -top-3 -right-3 z-10 flex size-8 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-colors hover:bg-white/20"
+            >
+              <svg
+                className="size-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <img
+              src={lightbox.src}
+              alt={lightbox.title}
+              className="max-h-[85vh] rounded-lg object-contain"
+            />
+            <p className="mt-2 text-center text-sm text-white/70">
+              {lightbox.title}
             </p>
-          </div>
+          </motion.div>
         </motion.div>
-      ))}
-    </div>
+      )}
+    </>
   )
 }
